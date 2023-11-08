@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/widgets/left_drawer.dart';
 import 'package:shopping_list/widgets/shop_card.dart';
 
-import 'models.dart';
+import '../models.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class MyHomePage extends StatelessWidget {
           'Shopping List',
         ),
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
