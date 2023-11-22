@@ -12,7 +12,7 @@ class LeftDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.indigo,
             ),
@@ -32,7 +32,6 @@ class LeftDrawer extends StatelessWidget {
                   "Catat seluruh keperluan belanjamu di sini!",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15, color: Colors.white),
-                  // TODO: Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
                 ),
               ],
             ),
@@ -45,7 +44,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyHomePage(),
+                    builder: (context) => const MyHomePage(),
                   ));
             },
           ),

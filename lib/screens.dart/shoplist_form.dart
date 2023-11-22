@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -5,7 +7,6 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_list/screens.dart/menu.dart';
 import 'package:shopping_list/widgets/left_drawer.dart';
-// TODO: Impor drawer yang sudah dibuat sebelumnya
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -35,7 +36,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
-      // TODO: Tambahkan drawer yang sudah dibuat di sini
       drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
@@ -75,7 +75,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
-                // TODO: Tambahkan variabel yang sesuai
                 onChanged: (String? value) {
                   setState(() {
                     _price = int.parse(value!);
@@ -104,7 +103,6 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 ),
                 onChanged: (String? value) {
                   setState(() {
-                    // TODO: Tambahkan variabel yang sesuai
                     _description = value!;
                   });
                 },
@@ -127,14 +125,12 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       // Kirim ke Django dan tunggu respons
-                      // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                       final response = await request.postJson(
                           "http://10.0.2.2:8000/create-flutter/",
                           jsonEncode(<String, dynamic>{
                             'name': _name,
                             'price': _price,
                             'description': _description,
-                            // TODO: Sesuaikan field data sesuai dengan aplikasimu
                           }));
                       if (response['status'] == 'success') {
                         ScaffoldMessenger.of(context)
@@ -143,7 +139,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         ));
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                          MaterialPageRoute(builder: (context) => const MyHomePage()),
                         );
                       } else {
                         ScaffoldMessenger.of(context)
